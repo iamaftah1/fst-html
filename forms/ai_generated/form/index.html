@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Employee Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.12);
+      --accent-1: #6a11cb;
+      --accent-2: #2575fc;
+      --field-height: 44px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color:#ffffff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      /* gradient background with subtle shapes */
+      background: radial-gradient(800px 400px at 10% 20%, rgba(106,17,203,0.18), transparent 8%),
+                  radial-gradient(700px 350px at 90% 80%, rgba(37,117,252,0.14), transparent 10%),
+                  linear-gradient(135deg, #0f172a 0%, #071029 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+    }
+
+    .card{
+      width:100%;
+      max-width:920px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    /* left: illustration / heading */
+    .panel-left{
+      padding:36px;
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--glass-border);
+      backdrop-filter: blur(6px);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:18px;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      width:56px;height:56px;border-radius:12px;
+      background: linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;
+      box-shadow: 0 6px 18px rgba(10,10,10,0.35);
+    }
+    h1{margin:0;font-size:28px;line-height:1.05}
+    p.lead{margin:0;opacity:0.9}
+
+    /* right: the transparent form */
+    form.register{
+      padding:28px;
+      border-radius:18px;
+      background: var(--glass-bg);
+      border:1px solid var(--glass-border);
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      backdrop-filter: blur(10px) saturate(120%);
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .row{display:flex;gap:12px}
+    .col{flex:1;display:flex;flex-direction:column;gap:8px}
+
+    label{font-size:13px;opacity:0.9}
+    input[type="text"], input[type="email"], input[type="date"], input[type="tel"], select{
+      height:var(--field-height);
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.08);
+      color: #fff;
+      padding:0 12px;
+      border-radius:10px;
+      outline:none;
+      transition:box-shadow .18s, border-color .12s;
+    }
+    input::placeholder{opacity:0.6;color:#e9eefb}
+    input:focus, select:focus{box-shadow:0 6px 18px rgba(37,117,252,0.12);border-color:rgba(37,117,252,0.6)}
+
+    .file-wrap{display:flex;align-items:center;gap:12px}
+    .file-btn{
+      height:40px;padding:8px 14px;border-radius:10px;border:1px dashed rgba(255,255,255,0.12);display:inline-flex;align-items:center;gap:8px;cursor:pointer
+    }
+    .small{font-size:12px;opacity:0.85}
+
+    .actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:6px}
+
+    .btn{
+      padding:12px 18px;border-radius:12px;border:none;cursor:pointer;font-weight:600;
+      background: linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      box-shadow: 0 8px 20px rgba(106,17,203,0.18);
+      color:white;
+    }
+    .btn.ghost{
+      background:transparent;border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .note{font-size:13px;opacity:0.85}
+    .preview{
+      width:82px;height:82px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02)
+    }
+
+    @media (max-width:880px){
+      .card{grid-template-columns:1fr;}
+      .panel-left{order:2}
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="panel-left">
+      <div class="brand">
+        <div class="logo">HR</div>
+        <div>
+          <div style="font-weight:600">Company Name</div>
+          <div class="small">Employee onboarding & registration</div>
+        </div>
+      </div>
+      <h1>Welcome to the team 👋</h1>
+      <p class="lead">Fill in the details on the right to register a new employee. The form uses a soft glassmorphism look with an accessible gradient background.</p>
+      <p class="small">Tip: Required fields are marked with <strong>*</strong>.</p>
+    </div>
+
+    <form class="register" id="regForm" onsubmit="return handleSubmit(event)">
+      <div class="row">
+        <div class="col">
+          <label>First name *</label>
+          <input id="first" type="text" placeholder="e.g. Ahmed" required />
+        </div>
+        <div class="col">
+          <label>Last name *</label>
+          <input id="last" type="text" placeholder="e.g. Yusuf" required />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>Email *</label>
+          <input id="email" type="email" placeholder="name@company.com" required />
+        </div>
+        <div class="col">
+          <label>Phone</label>
+          <input id="phone" type="tel" placeholder="(+252) 7xx xxx xxx" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>Employee ID *</label>
+          <input id="empid" type="text" placeholder="EMP-0001" required />
+        </div>
+        <div class="col">
+          <label>Department *</label>
+          <select id="dept" required>
+            <option value="">Select department</option>
+            <option>Human Resources</option>
+            <option>Engineering</option>
+            <option>Sales</option>
+            <option>Finance</option>
+            <option>Operations</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>Position / Title</label>
+          <input id="position" type="text" placeholder="e.g. Software Engineer" />
+        </div>
+        <div class="col">
+          <label>Date of Joining</label>
+          <input id="doj" type="date" />
+        </div>
+      </div>
+
+      <div class="row" style="align-items:center">
+        <div style="flex:1">
+          <label>Grade / Level</label>
+          <select id="grade">
+            <option value="">Select grade</option>
+            <option>Junior</option>
+            <option>Mid</option>
+            <option>Senior</option>
+            <option>Lead</option>
+          </select>
+        </div>
+
+        <div style="width:120px;display:flex;gap:12px;align-items:center">
+          <div class="preview" id="photoPreview">PNG</div>
+          <label class="file-btn">
+            <input id="photo" type="file" accept="image/*" style="display:none" onchange="previewPhoto(event)" />
+            Upload
+          </label>
+        </div>
+      </div>
+
+      <div>
+        <label>Notes</label>
+        <textarea id="notes" rows="3" placeholder="Optional notes..." style="width:100%;resize:vertical;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff"></textarea>
+      </div>
+
+      <div class="actions">
+        <div class="note">By submitting you agree to keep this data confidential.</div>
+        <div style="display:flex;gap:10px">
+          <button type="button" class="btn ghost" onclick="resetForm()">Reset</button>
+          <button type="submit" class="btn">Register</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function previewPhoto(e){
+      const p = document.getElementById('photoPreview');
+      const f = e.target.files && e.target.files[0];
+      if(!f){ p.textContent='PNG'; p.style.background='rgba(255,255,255,0.02)'; return }
+      const url = URL.createObjectURL(f);
+      p.style.backgroundImage = `url(${url})`;
+      p.style.backgroundSize = 'cover';
+      p.style.backgroundPosition = 'center';
+      p.textContent='';
+    }
+
+    function resetForm(){
+      const form = document.getElementById('regForm');
+      form.reset();
+      const p = document.getElementById('photoPreview');
+      p.style.backgroundImage=''; p.textContent='PNG';
+    }
+
+    function handleSubmit(e){
+      e.preventDefault();
+      // Gather form data (example) — you can replace this with fetch() to your API
+      const data = {
+        first: document.getElementById('first').value.trim(),
+        last: document.getElementById('last').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        empid: document.getElementById('empid').value.trim(),
+        dept: document.getElementById('dept').value,
+        position: document.getElementById('position').value,
+        doj: document.getElementById('doj').value,
+        grade: document.getElementById('grade').value,
+        notes: document.getElementById('notes').value
+      };
+
+      // Simple validation example
+      if(!data.first || !data.last || !data.email || !data.empid || !data.dept){
+        alert('Please fill in required fields.');
+        return;
+      }
+
+      // For demo: show the data in console and a success message
+      console.log('Employee data:', data);
+      alert('Employee registered successfully (demo). Check console for the data object.');
+      resetForm();
+    }
+  </script>
+</body>
+</html>
