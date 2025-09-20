@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Semantic HTML: Simple Website</title>
+  <style>
+    /* Simple, clean styling so the structure is visible */
+    :root{font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;line-height:1.45}
+    body{margin:0;padding:0;color:#111;background:#f7f7fb}
+    header, footer{background:#1e88e5;color:white;padding:1rem}
+    nav ul{list-style:none;padding:0;margin:0;display:flex;gap:1rem}
+    nav a{color:inherit;text-decoration:none}
+    main{display:grid;grid-template-columns:1fr 300px;gap:1rem;padding:1rem}
+    article{background:white;padding:1rem;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+    aside{background:#fffbe6;padding:1rem;border-radius:8px}
+    footer{font-size:.9rem}
+    figure{margin:0}
+    .meta{font-size:.9rem;color:#555}
+    .card{padding:.5rem 0}
+    details{margin-top:.5rem}
+    .tools{display:flex;gap:.5rem;flex-wrap:wrap}
+    mark{background:#ffeb3b}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Simple Semantic Website</h1>
+    <p class="meta">A demo page showing common HTML5 semantic elements</p>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="featured">
+      <article aria-labelledby="post-title">
+        <header>
+          <h2 id="post-title">Featured Article: The Value of Semantic HTML</h2>
+          <p class="meta">By <strong>Jane Doe</strong> — <time datetime="2025-09-20">September 20, 2025</time></p>
+        </header>
+
+        <figure>
+          <img src="https://via.placeholder.com/800x300.png?text=Semantic+HTML" alt="Placeholder representing semantic HTML" width="100%">
+          <figcaption>Figure: semantic elements improve structure and accessibility.</figcaption>
+        </figure>
+
+        <p>Using semantic elements like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;footer&gt;</code> makes pages easier to read for both humans and machines. Screen readers and search engines can understand the roles of content better.</p>
+
+        <section>
+          <h3>Quick benefits</h3>
+          <ul>
+            <li>Accessibility</li>
+            <li>SEO friendliness</li>
+            <li>Clearer structure for maintenance</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Inline semantics</h3>
+          <p>Use <mark>highlight</mark> to emphasize user-search terms, <strong>strong</strong> for importance and <em>em</em> for stress. For quotations, use <code>&lt;blockquote&gt;</code> and cite the source.</p>
+          <blockquote>
+            <p>"HTML is the backbone of web content structure." — <cite>Web Standards</cite></p>
+          </blockquote>
+        </section>
+
+        <footer>
+          <p class="meta">Tags: <span class="tools"><span class="card">HTML</span><span class="card">Accessibility</span><span class="card">SEO</span></span></p>
+        </footer>
+      </article>
+
+      <article aria-labelledby="post-2">
+        <header>
+          <h2 id="post-2">Short Notes & Live Elements</h2>
+        </header>
+        <p>Here are a few interactive & semantic elements you might use:</p>
+        <ul>
+          <li><code>&lt;details&gt;</code> / <code>&lt;summary&gt;</code> for collapsible content.</li>
+          <li><code>&lt;figure&gt;</code> / <code>&lt;figcaption&gt;</code> for images with captions.</li>
+          <li><code>&lt;address&gt;</code> for contact information.</li>
+        </ul>
+
+        <details>
+          <summary>Click to view example</summary>
+          <p>This content is hidden until the user expands the summary.</p>
+        </details>
+
+        <p>Progress and meter examples:</p>
+        <p><label>File upload progress</label><br><progress value="60" max="100">60%</progress></p>
+        <p><label>Battery level (simulated)</label><br><meter value="0.6" min="0" max="1">60%</meter></p>
+      </article>
+    </section>
+
+    <aside aria-labelledby="updates">
+      <h3 id="updates">Side Panel — Quick Info</h3>
+      <p class="card">Use <code>&lt;aside&gt;</code> for tangentially related content like ads, links or summaries.</p>
+
+      <section>
+        <h4>Recent posts</h4>
+        <ul>
+          <li><a href="#">Semantic HTML checklist</a></li>
+          <li><a href="#">A11y best practices</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>Contact</h4>
+        <address>
+          Example Co.<br>
+          123 Web Lane<br>
+          <a href="mailto:info@example.com">info@example.com</a>
+        </address>
+      </section>
+
+      <section>
+        <h4>Small form</h4>
+        <form action="#" method="get">
+          <label for="search">Search:</label><br>
+          <input id="search" name="search" type="search" placeholder="Search the site"><br>
+          <button type="submit">Go</button>
+        </form>
+      </section>
+    </aside>
+  </main>
+
+  <footer>
+    <p>© <time datetime="2025">2025</time> — Example Co. — <a href="#privacy">Privacy</a></p>
+    <p class="meta">This page includes these semantic elements: <code>header, nav, main, section, article, aside, footer, figure, figcaption, address, time, details, summary, progress, meter, blockquote, cite, mark</code>.</p>
+  </footer>
+</body>
+</html>
