@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Global Attributes Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    section { margin-bottom: 1.5rem; padding: 1rem; border: 1px solid #ccc; border-radius: 6px; }
+    [hidden] { display: none; }
+    .highlight { background: #ffeb3b; }
+  </style>
+</head>
+<body>
+
+  <header id="page-header" class="highlight" title="This is the header" dir="ltr" lang="en" style="color: darkblue;"
+          accesskey="h" tabindex="1" data-role="header" draggable="true" translate="yes" spellcheck="true"
+          contenteditable="true">
+    <h1>Global Attributes Example</h1>
+    <p>Edit me directly because of <code>contenteditable</code>.</p>
+  </header>
+
+  <main>
+    <section id="intro" autofocus inert>
+      <h2 slot="section-title" part="card">Introduction</h2>
+      <p itemprop="description" itemscope itemtype="https://schema.org/Article"
+         itemid="https://example.com/article/123" itemref="related">
+        This section shows usage of <code>itemscope</code>, <code>itemtype</code>, and <code>itemprop</code>.
+      </p>
+    </section>
+
+    <section id="form-demo" style="background:#f0f0f0;" title="Form Section" lang="en">
+      <h2>Form with input global attributes</h2>
+      <form>
+        <label for="username">Username:</label>
+        <input id="username" name="username" type="text"
+               autocapitalize="on" inputmode="text" enterkeyhint="done" tabindex="2"
+               placeholder="Enter username" data-info="user-field"><br><br>
+
+        <label for="age">Age:</label>
+        <input id="age" name="age" type="number"
+               inputmode="numeric" tabindex="3" title="Your Age"><br><br>
+
+        <button type="submit" accesskey="s" title="Submit Form">Submit</button>
+      </form>
+    </section>
+
+    <section id="hidden-example">
+      <h2>Hidden Example</h2>
+      <p>This paragraph is visible.</p>
+      <p hidden>This paragraph is hidden because of the <code>hidden</code> attribute.</p>
+    </section>
+
+    <section id="draggable-demo" draggable="true" style="background:#e0f7fa;" title="Drag me around">
+      <h2>Draggable Element</h2>
+      <p>You can drag this whole section because of <code>draggable=\"true\"</code>.</p>
+    </section>
+
+    <section id="microdata-demo">
+      <h2>Microdata Example</h2>
+      <article itemscope itemtype="https://schema.org/Person">
+        <p><span itemprop="name">Ada Lovelace</span> was a pioneer in computing.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer id="page-footer" lang="en" class="highlight" tabindex="4"
+          style="background:#333;color:#fff;padding:1rem;" title="Footer Section">
+    <p>&copy; 2025 Example Company</p>
+  </footer>
+
+</body>
+</html>
